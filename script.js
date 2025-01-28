@@ -16,23 +16,26 @@ const captions = [
 
 let currentIndex = 0;
 
-const photoElement = document.getElementById('photo');
-const captionElement = document.getElementById('caption-text');
+const photoElements = document.querySelectorAll('.photo-wrapper img');
+const captionElements = document.querySelectorAll('.photo-caption span');
+
+function updatePhoto() {
+    photoElements.forEach((img, index) => {
+        img.style.display = (index === currentIndex) ? 'block' : 'none';
+        captionElements[index].textContent = captions[index]; // Update the caption
+    });
+}
+
 const prevButton = document.getElementById('prev');
 const nextButton = document.getElementById('next');
 
-function updatePhoto() {
-    photoElement.src = photos[currentIndex];
-    captionElement.textContent = captions[currentIndex]; // Update the caption
-}
-
 prevButton.addEventListener('click', () => {
-    currentIndex = (currentIndex > 0) ? currentIndex - 1 : photos.length - 1;
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : photoElements.length - 1;
     updatePhoto();
 });
 
 nextButton.addEventListener('click', () => {
-    currentIndex = (currentIndex < photos.length - 1) ? currentIndex + 1 : 0;
+    currentIndex = (currentIndex < photoElements.length - 1) ? currentIndex + 1 : 0;
     updatePhoto();
 });
 

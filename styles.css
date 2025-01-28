@@ -21,39 +21,25 @@ body {
 }
 
 .gallery-container {
-    text-align: center;
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow wrapping of items */
+    justify-content: space-around; /* Evenly spread items */
     margin-top: 80px; /* Adds space below the title bar */
 }
 
+.photo-wrapper {
+    margin: 10px; /* Space between images */
+    position: relative; /* Allows absolute positioning of the caption */
+}
+
 img {
-    max-width: 80%;
+    max-width: 200px; /* Set a specific max-width for the showcase */
     height: auto;
     border: 2px solid #ccc;
     border-radius: 8px;
 }
 
 .photo-caption {
-    background-color: rgba(0, 0, 0, 0.5); /* Transparent black */
-    color: white;
-    text-align: center;
-    padding: 10px;
-    margin-top: 10px;
-}
-
-.buttons {
-    margin-top: 10px;
-}
-
-button {
-    padding: 10px 20px;
-    margin: 0 5px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007BFF;
-    color: white;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #0056b3;
+    text-align: center; /* Center the caption */
+    margin-top: 5px; /* Space above the caption */
 }
