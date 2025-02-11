@@ -24,7 +24,7 @@ body {
     display: flex; /* Use flexbox for layout */
     flex-wrap: wrap; /* Allow wrapping of items */
     justify-content: space-around; /* Evenly spread items */
-    margin-top: 80px; /* Adds space below the title bar */
+    margin-top: 120px; /* Increased space below the title bar */
 }
 
 .photo-wrapper {
@@ -33,7 +33,7 @@ body {
 }
 
 img {
-    max-width: 200px; /* Set a specific max-width for the showcase */
+    max-width: 220px; /* Set a specific max-width for the showcase */
     height: auto;
     border: 2px solid #ccc;
     border-radius: 8px;
