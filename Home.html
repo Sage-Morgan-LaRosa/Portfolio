@@ -59,7 +59,16 @@
 </div>
 
 <div class="footer">
-  <h2>Footer</h2>
+  <button onclick="scrollToTop()">Back to Top</button>
 </div>
+
+<script>
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+}
+</script>
 </body>
 </html>
