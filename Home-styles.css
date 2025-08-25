@@ -91,15 +91,17 @@ body {
 .info-link {
   position: absolute;
   bottom: 10px;
-  left: 10px;
-  background-color: rgba(0, 0, 255, 0.8);
-  color: white;
+  right: 10px;
+background-color: #000000;
+  color: #ffffff;
+  border: 3px solid #007bff;
   padding: 5px 10px;
-  border-radius: 5px;
+  border-radius: 15px;
   text-decoration: none;
-  font-size: 12px;
+  font-size: 18px;
   transition: background-color 0.3s ease;
   z-index: 10;
+  text-decoration: underline;
 }
 
 .info-link:hover {
@@ -119,11 +121,18 @@ body {
 }
 
 /* Footer */
-.footer {
-  padding: 20px;
-  text-align: center;
-  background: #ddd;
-  margin-top: 20px;
+.footer.button {
+  padding: 15px 25px;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: underline;
+  background-color: #000000;
+  color: #ffffff;
+  border: 3px solid #007bff;
+  border-radius: 8px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
 }
 
 /* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
