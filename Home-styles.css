@@ -2,56 +2,144 @@
   box-sizing: border-box;
 }
 
-/* Add a gray background color with some padding */
-body {
-    perspective: 100vmin;
-  }
+
+
+html, body {
+    background-color: black;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    font-size: 12px;
+    font-family: 'futura-pt', sans-serif;
+    color: #fff;
+    height: 100%;
+    width: 100%;
+}
 
 /* Header/Blog Title */
 .header {
   padding: 10px;
-  font-size: 40px;
   text-align: center;
-  background: transparent;
+  background-color: blue;
   color:#fff;
-  width: 400px;
-  height: 200px;
+  box-sizing: border-box;
+  height: 800px;
+  transition: height 0.3s ease, transform 0.3s ease;
+  will-change: height, transform;
+  position: relative;
+  z-index: 1;
+  max-width: 100%;
+  margin: 0 auto;
 }
 
-/* Create two unequal columns that floats next to each other */
-/* Left column */
-.leftcolumn {   
-  float: left;
-  width: 75%;
-  padding-left: 5%;
+/* About Me Section */
+.about-me {
+  height: 800px;
+  background-color: green;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Right column */
-.rightcolumn {
-  float: left;
-  width: 25%;
-  padding-left: 20px;
+.project-area {
+  padding-bottom: 10rem;
+  height: 800px;
+  margin: 0;
+  background-color: purple;
+  position: relative;
+  z-index: 1;
+  margin-left: auto;
+  margin-right: auto;
 }
+
+.title-container {
+        font-family: sans-serif;
+        text-align: center;
+        height: 200px;
+        width: 800px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 5%;
+        margin-left: 20%;
+        transition: opacity 0.3s ease;
+        will-change: opacity;
+      }
+
+.green-bar {
+  background-color: green;
+  height: 20px; /* Adjust height as needed */
+  width: 100%;
+  margin-left: 0%; /* Shift bar to start off screen on the left */
+  margin-top: 5%; /* Space between header and bar */
+}
+/* Increase h2 size with smooth transitions */
+h2 {
+    font-size: 100px; /* Adjust the size as needed */
+    padding: 0px;
+    top: 0;
+    transition: font-size 0.3s ease;
+    will-change: font-size;
+    background: linear-gradient(45deg, #ffffff, #e6e6e6, #cccccc, #b3b3b3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.5), 0 -1px 0 rgba(0,0,0,0.3);
+}
+
 
 /* Fake image */
 .fakeimg {
   background-color: #aaa;
   width: 100%;
-  padding: 20px;
+  padding: 0px;
+  margin-left: 0%; /* Shift bar to start off screen on the left */
+  margin-top: 0%;
+  margin-right: 0%;
 }
 
+/* Grid layout for cards */
+.grid {
+  display: grid;
+  grid-template-areas:
+    "area1 area2 area3";
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  justify-content: center;
+  align-items: start;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Grid area assignments */
+.cardWrap:nth-child(1) {
+  grid-area: area1;
+}
+
+.cardWrap:nth-child(2) {
+  grid-area: area2;
+}
+
+.cardWrap:nth-child(3) {
+  grid-area: area3;
+}
 
 /* Add a card effect for articles */
 .cardWrap {
   position: relative;
   background: linear-gradient(127deg, rgba(0, 0, 255, 0.8), rgba(0, 0, 255, 0) 100.71%);
-  padding: 5px;
+  padding: 10px;
   margin-top: 20px;
   border-radius: 15px;
+  transform: translateX(-100%);
+  opacity: 0;
   transition: all 1s ease;
   z-index: 1;
+  min-height: 400px; /* Reduced from 500px to 400px */
 }
-
 .cardWrap::before{
   position: absolute;
   content: "";
@@ -59,7 +147,7 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
-  border-radius: 15px;
+  border-radius: 5px;
   background: linear-gradient(336deg, rgba(65, 65, 248, 0.8), rgba(0, 0, 255, 0) 100.71%);
   transition: opacity 0.5s linear;
   z-index: -1;
@@ -68,16 +156,37 @@ body {
 .cardWrap:hover::before {
   opacity: 1;
 }
-
 .cardWrap:hover{
   background: transparent;
   box-shadow: 10px 10px 5px rgb(0, 255, 247);
+  transform: scale(1.05);
+  z-index: 2;
+}
+
+.cardWrap.animate-in {
+  animation: slideIn 1s ease forwards;
+}
+
+.cardWrap:nth-child(1).animate-in {
+  animation-delay: 0s;
+}
+
+.cardWrap:nth-child(2).animate-in {
+  animation-delay: 0.2s;
+}
+
+.cardWrap:nth-child(3).animate-in {
+  animation-delay: 0.4s;
+}
+
+.cardWrap.animate-in:hover {
+  transform: translateX(0) scale(1.05);
 }
 .card {
    background-color: white;
    color: black;
-   padding: 20px;
-   margin-top: 20px;
+   padding: 0px; /* Set top and bottom padding to 0, left and right to 15px */
+   margin-top: 0px;
    border: double 1em transparent;
    border-style: solid;
    border-width: 15px;
@@ -85,16 +194,18 @@ body {
    background-clip: padding-box;
    transition-duration: 2.5s;
    position: relative;
+   min-height: 450px; /* Reduced from 450px to 380px to be smaller than cardWrap */
+   display: flex;
+   flex-direction: column;
 }
-
 /* Info link styling */
 .info-link {
   position: absolute;
-  bottom: 10px;
-  right: 10px;
+  bottom: 15px;
+  right: 15px;
   background-color: rgba(0, 0, 255, 0.8);
   color: white;
-  padding: 5px 10px;
+  padding: 8px 15px;
   border-radius: 15px;
   text-decoration: none;
   font-size: 18px;
@@ -107,21 +218,18 @@ body {
   text-decoration: underline;
 }
 
-
-
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+/* Footer */
+.footer {
+  text-align: center;
+  max-width: 803px;
+  margin: 0 auto;
 }
 
-/* Footer */
 .footer button {
-  padding: 60px;
-  text-align: center;
+  margin: 0 auto;
+  display: block;
   margin-top: 40px;
-   padding: 15px 25px;
+  padding: 15px 25px;
   font-size: 18px;
   font-weight: bold;
   text-decoration: underline;
@@ -134,127 +242,128 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 800px) {
-  .leftcolumn, .rightcolumn {   
-    width: 100%;
-    padding: 0;
+
+
+/* metal color gradinta*/
+      .title {
+        font-size: 8em;
+        font-weight: 500;
+        font-family: "Fredoka One";
+        padding: 0;
+        margin: 0;
+        text-transform: uppercase;
+      }
+
+      span:last-child {
+        position: relative;
+        top: -30px;
+      }
+
+      .subtitle {
+        position: relative;
+        top: -70px;
+        font-size: 8em;
+        font-weight: 600;
+        font-family: Caveat;
+        padding: 0;
+        margin: 0;
+        transform: rotateZ(-10deg);
+        color: hsl(318, 100%, 51%);
+
+        text-shadow: -2px -3px hsl(53, 100%, 81%), 5px 5px hsl(240, 90%, 61%);
+      }
+
+      .metal {
+        background: linear-gradient(
+          hsl(239, 50%, 30%) 15%,
+          hsl(239, 50%, 40%) 25%,
+          hsl(200, 60%, 50%) 35%,
+          hsl(100, 70%, 80%) 45%,
+          hsl(60, 100%, 98%) 50%,
+          hsl(240, 0%, 0%) 52%,
+          hsl(240, 10%, 10%) 60%,
+          hsl(240, 50%, 30%) 70%,
+          hsl(220, 70%, 60%) 80%,
+          hsl(212, 92%, 76%) 85%
+        );
+
+        -webkit-text-stroke: 2px hsl(200, 65%, 80%);
+
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+      }
+
+      .raise {
+        filter: drop-shadow(1px 3px 0px hsl(242, 54%, 10%))
+          drop-shadow(1px 3px 0px hsl(242, 54%, 15%))
+          drop-shadow(1px 3px 0px hsl(242, 54%, 20%))
+          drop-shadow(1px 3px 0px hsl(242, 54%, 25%))
+          drop-shadow(1px 3px 0px hsl(242, 54%, 30%))
+          drop-shadow(0px 0px 10px rgba(16, 16, 16, 0.4));
+      }
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .title {
+    font-size: 6em;
+  }
+  h2 {
+    font-size: 80px;
   }
 }
 
-html {
-    color-scheme: dark only;
+@media (max-width: 480px) {
+  .grid {
+    grid-template-columns: 1fr;
   }
-  @layer base {
-    :root {
-      --font-size-min: 16;
-      --font-size-max: 20;
-      --font-ratio-min: 1.2;
-      --font-ratio-max: 1.33;
-      --font-width-min: 375;
-      --font-width-max: 1500;
-    }
-  
-    html {
-      color-scheme: dark only;
-    }
-  
-    [data-theme='light'] {
-      color-scheme: light only;
-    }
-  
-    [data-theme='dark'] {
-      color-scheme: dark only;
-    }
-  
-    :where(.fluid) {
-      --fluid-min: calc(
-        var(--font-size-min) * pow(var(--font-ratio-min), var(--font-level, 0))
-      );
-      --fluid-max: calc(
-        var(--font-size-max) * pow(var(--font-ratio-max), var(--font-level, 0))
-      );
-      --fluid-preferred: calc(
-        (var(--fluid-max) - var(--fluid-min)) /
-          (var(--font-width-max) - var(--font-width-min))
-      );
-      --fluid-type: clamp(
-        (var(--fluid-min) / 16) * 1rem,
-        ((var(--fluid-min) / 16) * 1rem) -
-          (((var(--fluid-preferred) * var(--font-width-min)) / 16) * 1rem) +
-          (var(--fluid-preferred) * var(--variable-unit, 100vi)),
-        (var(--fluid-max) / 16) * 1rem
-      );
-      font-size: var(--fluid-type);
-    }
-  
-    *,
-    *:after,
-    *:before {
-      box-sizing: border-box;
-    }
-  
-    body {
-      background: light-dark(#fff, #000);
-      display: grid;
-      place-items: center;
-      min-height: 100vh;
-      font-family: 'SF Pro Text', 'SF Pro Icons', 'AOS Icons', 'Helvetica Neue',
-        Helvetica, Arial, sans-serif, system-ui;
-    }
-  
-    body::before {
-      --size: 45px;
-      --line: color-mix(in hsl, canvasText, transparent 70%);
-      content: '';
-      height: 100vh;
-      width: 100vw;
-      position: fixed;
-      background: linear-gradient(
-            90deg,
-            var(--line) 1px,
-            transparent 1px var(--size)
-          )
-          50% 50% / var(--size) var(--size),
-        linear-gradient(var(--line) 1px, transparent 1px var(--size)) 50% 50% /
-          var(--size) var(--size);
-      mask: linear-gradient(-20deg, transparent 50%, white);
-      top: 0;
-      transform-style: flat;
-      pointer-events: none;
-      z-index: -1;
-    }
-  
-    .bear-link {
-      color: canvasText;
-      position: fixed;
-      top: 1rem;
-      left: 1rem;
-      width: 48px;
-      aspect-ratio: 1;
-      display: grid;
-      place-items: center;
-      opacity: 0.8;
-    }
-  
-    :where(.x-link, .bear-link):is(:hover, :focus-visible) {
-      opacity: 1;
-    }
-  
-    .bear-link svg {
-      width: 75%;
-    }
-  
-    /* Utilities */
-    .sr-only {
-      position: absolute;
-      width: 1px;
-      height: 1px;
-      padding: 0;
-      margin: -1px;
-      overflow: hidden;
-      clip: rect(0, 0, 0, 0);
-      white-space: nowrap;
-      border-width: 0;
-    }
+  .title {
+    font-size: 4em;
   }
+  h2 {
+    font-size: 60px;
+  }
+}
+
+/* Keyframe animation for slide-in from left */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Animated line styles */
+.animated-line {
+  width: 50%;
+  height: 100px;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.animated-line path {
+  stroke-dasharray: 24;
+  stroke-dashoffset: 24;
+  transition: stroke-dashoffset 1s ease;
+}
+
+.animated-line.animate path {
+  stroke-dashoffset: 0;
+  animation: blink 1s;
+}
+
+@keyframes blink {
+  0%, 100% {
+    stroke-opacity: 1;
+  }
+  50% {
+    stroke-opacity: 0;
+  }
+}

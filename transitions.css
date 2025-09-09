@@ -96,10 +96,7 @@ html {
   cursor: pointer;
 }
 
-.cardWrap:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px rgba(0, 255, 247, 0.3);
-}
+/* Note: Main card hover effects are now handled in Home-styles.css */
 
 /* Responsive navigation */
 @media screen and (max-width: 600px) {
